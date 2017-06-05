@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/bkadmin.css"/>
+</head>
+<body>
+
+<div class="seltab" id="sel">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="javascript:void (0)">选项卡1</a>
+        </li>
+        <li>
+            <a href="javascript:void (0)">选项卡2</a>
+        </li>
+        <li>
+            <a href="javascript:void (0)">选项卡3</a>
+        </li>
+    </ul>
+    <div id="selDiv">
+        <div >选项卡1</div>
+        <div style="display: none" >选项卡2</div>
+        <div style="display:none;" >选项卡3</div>
+    </div>
+</div>
+<script src="js/jquery-1.11.1.min.js"></script>
+
+<script>
+
+    //选项卡的函数
+    function selectedTab(selId,divId){
+        var li = $(selId).children("ul").children("li"); //获取li
+        var div = $(divId).children("div");              //获取内容的切换部分
+        for(var i = 0; i<li.length;i++){                 //循环遍历onclick事件
+            li[i].index = i ;                           //li[0].index = 0 index是自定义属性
+            li[i].onclick = function(){
+                for(var i=0;i<li.length;i++){            //循环遍历去掉li的样式和div的隐藏
+                    li[i].className = '';
+                    $(div[i]).hide();
+                };
+                $(this).addClass("active");              //当前按钮添加样式
+                $(div[this.index]).show()                // this.index是当前div
+            }
+        }
+
+    }
+
+    selectedTab("#sel","#selDiv")
+
+    //获取选项卡原生js
+//    var sel = document.getElementById("sel");
+//    var li = sel.getElementsByTagName("li");
+//    var selDiv = sel.getElementById("selDiv")
+//    var div = selDiv.getElementsByTagName("div");
+//
+//    for(var i = 0;i < li.length;i++){   //循环遍历onclick事件
+//        li[i].index = i;    //li[0].index = 0 index是自定义属性
+//        li[i].onclick = function(){
+//            for(var i = 0;i < li.length;i++){   //循环遍历去掉li的样式和div的隐藏
+//                li[i].className = '';
+//                div[i].style.display = 'none';
+//            };
+//            this.className = 'active';  //当前按钮添加样式
+//            div[this.index].style.display = 'block'; // this.index是当前div
+//
+//
+//        }
+//
+//    }
+
+
+
+</script>
+</body>
+</html>
